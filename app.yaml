@@ -1,0 +1,7 @@
+runtime: nodejs
+env: flex
+api_version: 1
+
+handlers:
+- url: /.*
+  script: app.app

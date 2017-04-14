@@ -25,32 +25,29 @@ app.use(bodyParser.urlencoded({
 app.use("/", function (req, res) {
     res.writeHead(200, {'Content-Type': 'text/plain'});
 
+    if (req.method === "POST") {
 
-    var saveName = req.body.name;
-    var saveItems = req.body.items;
+        var saveName = req.body.name;
+        var saveItems = req.body.items;
 
-
-    // TURN SAVEITEMS INTO SQL ARRAY FORM
-    for (i = 0; i < saveItems.length; i++) {  
-        saveItems[i] = `"${saveItems[i]}"`;
-    } saveItems = saveItems.toString();
+        // TURN SAVEITEMS INTO SQL ARRAY FORM
+        for (i = 0; i < saveItems.length; i++) {  
+            saveItems[i] = `"${saveItems[i]}"`;
+        } saveItems = saveItems.toString();
     
-    saveItems = `{${saveItems}}`;
+        saveItems = `{${saveItems}}`;
+        console.log(saveItems);
+        clientSave(saveName, saveItems);
+    }
 
-
-    console.log(saveItems);
-
-    clientSave(saveName, saveItems);
 });
 
 function clientSave (name, items) {
-    console.log(items);
     dbPool.connect((error, client, release) => {
 
         if (!error) {
             console.log("Connected to database without errors.")
             connected = true;
-
         } else {
             console.log("Encountered error with code " + error.code + ";"
                 + "\nWith error message: \"" + error.message + "\";");
@@ -60,7 +57,8 @@ function clientSave (name, items) {
 
             console.log("Attempting query...");
             
-            client.query(`INSERT INTO logins VALUES (${name}, ${items})`, (error, result) => {
+            client.query(`INSERT INTO logins VALUES (${name}, ${items})`, 
+            (error, result) => {
                 if (error) {
                     console.log(error);
                 } else {

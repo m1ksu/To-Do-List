@@ -30,19 +30,20 @@ $(function(){
 
 
     $("#save").on('click', function() {
-        var json = {"name": "m1ksu", "items": ["alpha", "bravo"]};
 
-        nodePost(json);
+        var listHTML;
+
+
+        for (i = -1; i <= $("ul > *").length - 2; i++) {
+            listHTML += $(`ul > *:eq(${i})`).html();
+        }
+
+        listHTML = listHTML.replace(/undefined/g, "");
+
+        if (typeof(Storage) !== "undefined") {
+            console.log(1);
+        } else {
+            console.log("No support for web storage.");
+        }
     });
-
-    function nodePost(json) {
-        $.ajax({type: 'POST', 
-            url: '../',
-            data: json,
-            success (result,status,xhr) {
-                console.log(result);
-                console.log(status);
-            }
-        });
-    }
 });

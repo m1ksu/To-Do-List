@@ -14,15 +14,13 @@ html
         script(src="https://code.jquery.com/jquery-3.1.1.min.js"
             integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
             crossorigin="anonymous")
-        script(src="js/http.min.js")
         script(src="js/script.js")
     body
         
         input#listput(type="text")
         span.button &nbsp; Press this!
+        h1 Da list!!!    
         
         ul
-            h1 Da list!!!    
 
-        .login Login: &nbsp; #[input(type="text")]
-        #save Save List
+        #save Save List #[span#save-unav]

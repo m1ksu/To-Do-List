@@ -5,6 +5,10 @@ ehthumbs.db
 # Folder config file
 Desktop.ini
 
+# VS and VS Code folder
+.vscode/
+.vs/
+
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 

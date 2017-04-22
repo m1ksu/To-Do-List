@@ -68,6 +68,6 @@ $(function() {
     if (lsAvailable() === true) {
         available = true;
     } else {
-        $(".storage-unav").css("visibility", "visible");
+        $(".storage-unav").css("display", "inline");
     }
 });

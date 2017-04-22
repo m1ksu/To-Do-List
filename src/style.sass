@@ -1,28 +1,37 @@
+// sass-lint:disable nesting
 html, body
-    font-family: 'Source Sans Pro', sans-serif
-    font-size: 24px
+  font-family: 'Source Sans Pro', sans-serif
+  font-size: 24px
 
 body
-    margin: 10% auto 0 auto
-    width: 40%
+  margin: 10% auto 0
+  width: 40%
 
 input
-    vertical-align: middle
-ul
-    li
-        margin-left: 4%
-    #remove
-        font-weight: bold
-        font-size: 34px
-        margin-left: 10px
-    #remove:hover
-        cursor: pointer
+  vertical-align: middle
 
-.login
-    margin-top: 30%
+li
+  margin-left: 4%
 
-.button:hover, #save:hover
+  .remove-button
+    font-size: 34px
+    font-weight: bold
+    margin-left: 10px
+
+    &:hover
+      cursor: pointer
+
+.list-input-button
+  &:hover
     cursor: pointer
 
-#stor-unav
-    visibility: hidden
+
+.login
+  margin-top: 30%
+
+.save-button
+  &:hover
+    cursor: pointer
+
+.stor-unav
+  visibility: hidden

@@ -14,14 +14,15 @@ html
         script(src="https://code.jquery.com/jquery-3.1.1.min.js"
             integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
             crossorigin="anonymous")
-        script(src="js/script.js")
+        script(src="script.js")
     body
         
-        input#listput(type="text")
-        span.button &nbsp; Press this!
-        h1 Da list!!!    
+        input.list-input(type="text")
+        span.list-input-button &nbsp; Press this!
         
-        ul
+        h1 The List:    
+        
+        ul.list
 
-        #save Save List
-        span#stor-unav Local storage is not supported in this browser.
+        .save-button Save List
+        span.storage-unav Local storage is not supported by this browser.

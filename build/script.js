@@ -9,27 +9,27 @@ $(function(){
     }
 
     // Pressing the button inputs the item.
-    $(".button").on("click", function() {
+    $(".list-input-button").on("click", function() {
         inputVal();
     });
 
     // Pressing enter inputs the item.
-    $("#listput").on("keypress", function(e) {
+    $(".list-input").on("keypress", function(e) {
         if (e.which === 13) {
             inputVal();
         }
     });
 
     // Remove list item on click.
-    $(document).on("click", "#remove", function() {
+    $(document).on("click", ".remove-button", function() {
         $(this).parent().remove();
     });
 
     // Remove button's HTML..
-    var removeButton = "<span id=\"remove\"> x </span>"
+    var removeButton = "<span class=\"remove-button\"> x </span>"
 
 
-    $("#save").on("click", function() {
+    $(".save-button").on("click", function() {
 
         var listHTML;
 

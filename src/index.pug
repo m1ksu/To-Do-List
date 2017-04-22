@@ -1,4 +1,3 @@
-//output:../index.html, pretty:false
 doctype html
 html
     head
@@ -7,7 +6,7 @@ html
         meta(charset="utf-8")
         meta(name="viewport" content="width=device-width, initial-scale=1.0")
 
-        link(href="https://fonts.googleapis.com/css?family=Source+Sans+Pro"
+        link(href="https://fonts.googleapis.com/css?family=Cabin"
             rel="stylesheet")
         link(rel="stylesheet", href="style.css")
             
@@ -18,11 +17,15 @@ html
     body
         
         input.list-input(type="text")
-        span.list-input-button &nbsp; Press this!
+        span.list-input-button &nbsp; Press to add!
         
         h1 The List:    
-        
+
         ul.list
 
-        .save-button Save List
+        .save-button
+            span Save List
         span.storage-unav Local storage is not supported by this browser.
+        
+        .load-button 
+            span Load List

@@ -1,16 +1,36 @@
-// sass-lint:disable nesting
-html, body
-  font-family: 'Source Sans Pro', sans-serif
+html,
+body
+  $globalbackgroundcolor: rgb(49, 49, 49)
+  $globalcolor: #fff
+  $textshadowcolor: rgba(0, 0, 0, 0.77)
+
+  background-color: $globalbackgroundcolor
+  color: $globalcolor
+
+  font-family: 'Cabin', sans-serif
   font-size: 24px
+
+  text-shadow: 3px 3px 2px $textshadowcolor
+
 
 body
   margin: 10% auto 0
   width: 40%
 
-input
+.list-input
+  margin-bottom: 3px
   vertical-align: middle
 
-li
+.list
+  $listbackgroundcolor: rgb(181, 181, 181)
+  $listshadowcolor: rgba(0, 0, 0, 0.7)
+
+  background: $listbackgroundcolor
+  box-shadow: inset 0 0 15px 0 $listshadowcolor
+  height: 400px
+  overflow-y: scroll
+
+.list-item
   margin-left: 4%
 
   .remove-button
@@ -25,13 +45,32 @@ li
   &:hover
     cursor: pointer
 
-
 .login
   margin-top: 30%
 
-.save-button
+.save-button,
+.load-button
+  $buttoncolor: rgba(200, 0, 200, 1)
+  $buttontextcolor: #fff
+
+  background: $buttoncolor
+  box-shadow: 0 5px 0 darken($buttoncolor, 15%)
+  color: $buttontextcolor
+  height: 40px
+  text-align: center
+  width: 120px
+
   &:hover
     cursor: pointer
 
-.stor-unav
+  &:active
+    box-shadow: none
+    transform: translateY(5px)
+
+  span
+    position: relative
+    top: 15%
+    transform: translateY(50%)
+
+.storage-unav
   visibility: hidden

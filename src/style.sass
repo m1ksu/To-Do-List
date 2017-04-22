@@ -17,12 +17,25 @@ body
   width: 40%
 
 .list-input
+  $insetcolor: rgba(0, 0, 0, 0.7)
+  $bordercolor: rgba(0, 0, 0, 0.85)
+
+  width: 300px
   margin-bottom: 3px
   vertical-align: middle
+
+  box-shadow: inset 0 0 3px 1px $insetcolor
+  border: 2px solid $bordercolor
+  font-family: Cabin
+  padding: 10px 0 10px 10px
+  font-size: 16px
+  font-weight: bold
 
 .list
   $listbackgroundcolor: rgb(181, 181, 181)
   $listshadowcolor: rgba(0, 0, 0, 0.7)
+
+  padding: 40px
 
   background: $listbackgroundcolor
   box-shadow: inset 0 0 15px 0 $listshadowcolor
@@ -59,6 +72,8 @@ body
   text-align: center
   width: 120px
 
+  display: table-cell
+
   &:hover
     cursor: pointer
 
@@ -71,5 +86,16 @@ body
     top: 15%
     transform: translateY(50%)
 
+.load-button
+  transform: translateX(25px)
 .storage-unav
-  visibility: hidden
+  display: none
+
+@media (screen and max-width: 1100px)
+  body
+    width: 90%
+    padding-bottom: 20px
+
+@media (screen and max-width: 375px)
+  .list-input
+    width: 275px

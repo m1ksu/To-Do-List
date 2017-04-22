@@ -1,0 +1,33 @@
+html, body {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 24px; }
+
+body {
+  margin: 10% auto 0;
+  width: 40%; }
+
+input {
+  vertical-align: middle; }
+
+li {
+  margin-left: 4%; }
+  li .remove-button {
+    font-size: 34px;
+    font-weight: bold;
+    margin-left: 10px; }
+    li .remove-button:hover {
+      cursor: pointer; }
+
+.list-input-button:hover {
+  cursor: pointer; }
+
+.login {
+  margin-top: 30%; }
+
+.save-button:hover {
+  cursor: pointer; }
+
+.stor-unav {
+  visibility: hidden; }
+
+/*# sourceMappingURL=style.css.map */

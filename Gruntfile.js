@@ -6,7 +6,7 @@ module.exports = function(grunt) {
     pug: {
         compile: {
             options: {
-                //pretty: false
+                pretty: false
             },
             
             files: {
@@ -16,10 +16,10 @@ module.exports = function(grunt) {
     },
 
     sass: {
-        options: {
-            //style: 'compressed'
-        },
         dist: {
+            options: {
+                style: 'compressed'
+            },
 			files: {
 				'build/style.css': 'src/style.sass'
 			}

@@ -5,6 +5,9 @@ ehthumbs.db
 # Folder config file
 Desktop.ini
 
+# SASS cache
+.sass-cache/
+
 # VS and VS Code folder
 .vscode/
 .vs/

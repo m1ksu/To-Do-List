@@ -42,7 +42,7 @@ $(function(){
         if (typeof(Storage) !== "undefined") {
             console.log(1);
         } else {
-            $("#stor-unav").css("visibility", "hidden");
+            $(".storage-unav").css("visibility", "hidden");
         }
     });
 });

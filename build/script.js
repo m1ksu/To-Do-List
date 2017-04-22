@@ -1,11 +1,15 @@
-$(function(){
+$(function() {
 
     function inputVal() {
-        $("ul").append("<li>" +
-        $("input").val() + removeButton
-        + "</li>");
 
-        $("#listput").val("");
+        var input = $(".list-input").val();
+
+        if (input.trim().length !== 0) {
+            $("ul").append("<li class='list-item'>" + 
+                $(".list-input").val() + removeButton + "</li>");
+
+            $(".list-input").val("");
+        }
     }
 
     // Pressing the button inputs the item.
@@ -28,21 +32,42 @@ $(function(){
     // Remove button's HTML..
     var removeButton = "<span class=\"remove-button\"> x </span>"
 
+    $(".save-button").on("click", () => {
 
-    $(".save-button").on("click", function() {
+        if ($(".list > *").length !== 0) {
+            var listHTML;
 
-        var listHTML;
+            for (i = 0; i < $(".list > *").length; i++) {
+                listHTML += "<li class='list-item'> " + $(`.list > *:eq(${i})`).html() + "</li>";
+            }
 
-        for (i = -1; i <= $("ul > *").length - 2; i++) {
-            listHTML += $(`ul > *:eq(${i})`).html();
-        }
+            listHTML = listHTML.replace(/undefined/g, "");
 
-        listHTML = listHTML.replace(/undefined/g, "");
-
-        if (typeof(Storage) !== "undefined") {
-            console.log(1);
-        } else {
-            $(".storage-unav").css("visibility", "hidden");
+            if (available) {
+                localStorage.setItem("strings", listHTML);
+            }
         }
     });
+
+    $(".load-button").on("click", () => {
+        $(".list").html(localStorage.strings);
+    });
+
+    var available = false;
+
+    function lsAvailable() {
+        try {
+            localStorage.setItem("test", "test");
+            localStorage.removeItem("test");
+            return true;
+        } catch (e) {
+            return false;
+        }
+    }
+
+    if (lsAvailable() === true) {
+        available = true;
+    } else {
+        $(".storage-unav").css("visibility", "visible");
+    }
 });

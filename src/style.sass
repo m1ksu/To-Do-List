@@ -65,17 +65,17 @@ body
 .load-button
   $buttoncolor: rgba(200, 0, 200, 1)
   $buttontextcolor: #fff
+  $buttonbordercolor: darken($buttoncolor, 20%)
 
   background: $buttoncolor
-  box-shadow: 0 5px 0 darken($buttoncolor, 15%)
+  border: 1px solid $buttonbordercolor
+  box-shadow: 0 5px 0 darken($buttoncolor, 15%), 0 5px 0 1px darken($buttonbordercolor, 5%)
   color: $buttontextcolor
+  display: table-cell
   height: 40px
   text-align: center
-  width: 120px
-
   text-shadow: 2px 2px 2px $globaltextshadowcolor
-
-  display: table-cell
+  width: 120px
 
   &:hover
     cursor: pointer
@@ -97,9 +97,10 @@ body
 
 @media (screen and max-width: 1100px)
   body
-    width: 90%
     padding-bottom: 20px
+    width: 90%
 
 @media (screen and max-width: 375px)
-  .list-input
-    width: 275px
+  body
+    .list-input
+      width: 275px

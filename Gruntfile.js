@@ -36,6 +36,14 @@ module.exports = function(grunt) {
                 files: ['src/style.sass'],
                 tasks: ['sass']
             }
+        },
+
+        autoprefixer: {
+            your_target: {
+                files: {
+                    'build/style.css': 'build/style.css'
+                }
+            }
         }
     });
 
@@ -43,6 +51,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-pug');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-autoprefixer');
 
     // Default task(s).
     grunt.registerTask('default', ['watch']);

@@ -1,48 +1,91 @@
-$(function(){
+$(function() {
 
-    function inputVal() {
-        $("ul").append("<li>" +
-        $("input").val() + removeButton
-        + "</li>");
+    var todo = {
+        people: [],
+        init: function() {
+            this.variables();
+            this.testStorageAvailable();
+            this.add();
+            this.remove();
+            this.save();
+            this.load();
+        },
 
-        $("#listput").val("");
-    }
+        variables: function() {
+            $inputBox = $(".list-input");
+            $inputButton = $(".list-input-button");
+            $list = $(".list");
+            templateStart = "<li class='list-item'> ";
+            templateEnd = "<span class=\"remove-button\"> x </span> </li>";
+            lsAvailable = false;
+        },
 
-    // Pressing the button inputs the item.
-    $(".list-input-button").on("click", function() {
-        inputVal();
-    });
+        add: function() {
+            $(".list-input-button").on("click", function() {
+                insert();
+            });
 
-    // Pressing enter inputs the item.
-    $(".list-input").on("keypress", function(e) {
-        if (e.which === 13) {
-            inputVal();
+            $(".list-input").on("keypress", function(e) {
+                if (e.which === 13) {
+                    insert();
+                }
+            });
+
+            function insert() {
+                inputText = $inputBox.val()
+                if (inputText.trim().length !== 0) {
+                    $list.append(templateStart + inputText + templateEnd);
+                    $inputBox.val("");
+                }
+            }
+        },
+
+        remove: function() {
+            $(document).on("click", ".remove-button", function() {
+                $(this).parent().remove();
+            });
+        },
+
+        testStorageAvailable: function() {
+            try {
+                localStorage.setItem("test", "test");
+                localStorage.removeItem("test");
+                lsAvailable = true;
+            } catch (e) {
+                lsAvailable = false;
+            }
+        },
+
+        save: function() {
+            $(".save-button").on("click", () => {
+
+                if ($(".list > *").length !== 0) {
+                    var listHTML;
+
+                    // for (i = 0; i < $(".list > *").length; i++) {
+                    //   listHTML += $(`.list > *:eq(${i})`).html();
+                    // }
+
+                    $(".list > *").each(function(index, el) {
+                        listHTML += $(`.list > *:eq( ${index} )`).html();
+                    });
+
+                    listHTML = listHTML.replace(/undefined/g, "");
+
+                    if (lsAvailable) {
+                        localStorage.setItem("strings", listHTML);
+                    }
+                }
+            });
+        },
+
+        load: function() {
+            $(".load-button").on("click", () => {
+                $list.html(localStorage.strings);
+            });
         }
-    });
+    };
 
-    // Remove list item on click.
-    $(document).on("click", ".remove-button", function() {
-        $(this).parent().remove();
-    });
+    todo.init();
 
-    // Remove button's HTML..
-    var removeButton = "<span class=\"remove-button\"> x </span>"
-
-
-    $(".save-button").on("click", function() {
-
-        var listHTML;
-
-        for (i = -1; i <= $("ul > *").length - 2; i++) {
-            listHTML += $(`ul > *:eq(${i})`).html();
-        }
-
-        listHTML = listHTML.replace(/undefined/g, "");
-
-        if (typeof(Storage) !== "undefined") {
-            console.log(1);
-        } else {
-            $("#stor-unav").css("visibility", "hidden");
-        }
-    });
 });

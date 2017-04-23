@@ -1,8 +1,8 @@
-$(function() {
+$(function () {
 
     var todo = {
         people: [],
-        init: function() {
+        init: function () {
             this.variables();
             this.testStorageAvailable();
             this.add();
@@ -11,7 +11,7 @@ $(function() {
             this.load();
         },
 
-        variables: function() {
+        variables: function () {
             $inputBox = $(".list-input");
             $inputButton = $(".list-input-button");
             $list = $(".list");
@@ -20,19 +20,19 @@ $(function() {
             lsAvailable = false;
         },
 
-        add: function() {
-            $(".list-input-button").on("click", function() {
+        add: function () {
+            $(".list-input-button").on("click", function () {
                 insert();
             });
 
-            $(".list-input").on("keypress", function(e) {
+            $(".list-input").on("keypress", function (e) {
                 if (e.which === 13) {
                     insert();
                 }
             });
 
             function insert() {
-                inputText = $inputBox.val()
+                inputText = $inputBox.val();
                 if (inputText.trim().length !== 0) {
                     $list.append(templateStart + inputText + templateEnd);
                     $inputBox.val("");
@@ -40,13 +40,13 @@ $(function() {
             }
         },
 
-        remove: function() {
-            $(document).on("click", ".remove-button", function() {
+        remove: function () {
+            $(document).on("click", ".remove-button", function () {
                 $(this).parent().remove();
             });
         },
 
-        testStorageAvailable: function() {
+        testStorageAvailable: function () {
             try {
                 localStorage.setItem("test", "test");
                 localStorage.removeItem("test");
@@ -56,7 +56,7 @@ $(function() {
             }
         },
 
-        save: function() {
+        save: function () {
             $(".save-button").on("click", () => {
 
                 if ($(".list > *").length !== 0) {
@@ -66,7 +66,7 @@ $(function() {
                     //   listHTML += $(`.list > *:eq(${i})`).html();
                     // }
 
-                    $(".list > *").each(function(index, el) {
+                    $(".list > *").each(function (index, el) {
                         listHTML += $(`.list > *:eq( ${index} )`).html();
                     });
 
@@ -79,7 +79,7 @@ $(function() {
             });
         },
 
-        load: function() {
+        load: function () {
             $(".load-button").on("click", () => {
                 $list.html(localStorage.strings);
             });
@@ -87,5 +87,4 @@ $(function() {
     };
 
     todo.init();
-
 });

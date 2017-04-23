@@ -9,23 +9,26 @@ html
         link(href="https://fonts.googleapis.com/css?family=Cabin"
             rel="stylesheet")
         link(rel="stylesheet", href="style.css")
-            
+
         script(src="https://code.jquery.com/jquery-3.1.1.min.js"
             integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
             crossorigin="anonymous")
         script(src="script.js")
     body
-        
-        input.list-input(type="text")
-        span.list-input-button &nbsp; Press to add!
-        
-        h1 The List:    
+
+
+        h1 The List:
 
         ul.list
+
+        input.list-input(type="text")
+        span.list-input-button &nbsp; Press this to add!
+
+        br.button-margin
 
         .save-button
             span Save List
         span.storage-unav Local storage is not supported by this browser.
-        
-        .load-button 
+
+        .load-button
             span Load List

@@ -1,73 +1,91 @@
 $(function() {
 
-    function inputVal() {
+    var todo = {
+        people: [],
+        init: function() {
+            this.variables();
+            this.testStorageAvailable();
+            this.add();
+            this.remove();
+            this.save();
+            this.load();
+        },
 
-        var input = $(".list-input").val();
+        variables: function() {
+            $inputBox = $(".list-input");
+            $inputButton = $(".list-input-button");
+            $list = $(".list");
+            templateStart = "<li class='list-item'> ";
+            templateEnd = "<span class=\"remove-button\"> x </span> </li>";
+            lsAvailable = false;
+        },
 
-        if (input.trim().length !== 0) {
-            $("ul").append("<li class='list-item'>" + 
-                $(".list-input").val() + removeButton + "</li>");
+        add: function() {
+            $(".list-input-button").on("click", function() {
+                insert();
+            });
 
-            $(".list-input").val("");
-        }
-    }
+            $(".list-input").on("keypress", function(e) {
+                if (e.which === 13) {
+                    insert();
+                }
+            });
 
-    // Pressing the button inputs the item.
-    $(".list-input-button").on("click", function() {
-        inputVal();
-    });
-
-    // Pressing enter inputs the item.
-    $(".list-input").on("keypress", function(e) {
-        if (e.which === 13) {
-            inputVal();
-        }
-    });
-
-    // Remove list item on click.
-    $(document).on("click", ".remove-button", function() {
-        $(this).parent().remove();
-    });
-
-    // Remove button's HTML..
-    var removeButton = "<span class=\"remove-button\"> x </span>"
-
-    $(".save-button").on("click", () => {
-
-        if ($(".list > *").length !== 0) {
-            var listHTML;
-
-            for (i = 0; i < $(".list > *").length; i++) {
-                listHTML += "<li class='list-item'> " + $(`.list > *:eq(${i})`).html() + "</li>";
+            function insert() {
+                inputText = $inputBox.val()
+                if (inputText.trim().length !== 0) {
+                    $list.append(templateStart + inputText + templateEnd);
+                    $inputBox.val("");
+                }
             }
+        },
 
-            listHTML = listHTML.replace(/undefined/g, "");
+        remove: function() {
+            $(document).on("click", ".remove-button", function() {
+                $(this).parent().remove();
+            });
+        },
 
-            if (available) {
-                localStorage.setItem("strings", listHTML);
+        testStorageAvailable: function() {
+            try {
+                localStorage.setItem("test", "test");
+                localStorage.removeItem("test");
+                lsAvailable = true;
+            } catch (e) {
+                lsAvailable = false;
             }
+        },
+
+        save: function() {
+            $(".save-button").on("click", () => {
+
+                if ($(".list > *").length !== 0) {
+                    var listHTML;
+
+                    // for (i = 0; i < $(".list > *").length; i++) {
+                    //   listHTML += $(`.list > *:eq(${i})`).html();
+                    // }
+
+                    $(".list > *").each(function(index, el) {
+                        listHTML += $(`.list > *:eq( ${index} )`).html();
+                    });
+
+                    listHTML = listHTML.replace(/undefined/g, "");
+
+                    if (lsAvailable) {
+                        localStorage.setItem("strings", listHTML);
+                    }
+                }
+            });
+        },
+
+        load: function() {
+            $(".load-button").on("click", () => {
+                $list.html(localStorage.strings);
+            });
         }
-    });
+    };
 
-    $(".load-button").on("click", () => {
-        $(".list").html(localStorage.strings);
-    });
+    todo.init();
 
-    var available = false;
-
-    function lsAvailable() {
-        try {
-            localStorage.setItem("test", "test");
-            localStorage.removeItem("test");
-            return true;
-        } catch (e) {
-            return false;
-        }
-    }
-
-    if (lsAvailable() === true) {
-        available = true;
-    } else {
-        $(".storage-unav").css("display", "inline");
-    }
 });

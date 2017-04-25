@@ -21,7 +21,7 @@ $(function() {
         },
 
         add: function() {
-            $(".list-input-button").on("click", function() {
+            $(".list-input").on("click", function() {
                 insert();
             });
 

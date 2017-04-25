@@ -1,7 +1,7 @@
 doctype html
 html
     head
-        title To-Do
+        title The Amazing List!
 
         meta(charset="utf-8")
         meta(name="viewport" content="width=device-width, initial-scale=1.0")
@@ -17,18 +17,21 @@ html
     body
 
 
-        h1 List:
+        h1 Your List:
 
         ul.list
 
         input.list-input(type="text")
-        span.list-input-button &nbsp; Press this to add!
+        span.list-input-button &nbsp; 
+        .add-button
+            div +
 
         br.button-margin
 
         .save-button
             div SAVE
-        span.storage-unav Local storage is not supported by this browser.
 
         .load-button
             div LOAD
+        br
+        div.storage-unav Local storage is not supported by this browser.

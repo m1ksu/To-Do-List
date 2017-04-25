@@ -51,15 +51,9 @@ body
     &:hover
       cursor: pointer
 
-.list-input-button
-  user-select: none
-
-  &:hover
-    color: darken($globalcolor, 40%)
-    cursor: pointer
-
 .save-button,
-.load-button
+.load-button,
+.add-button
   $buttoncolor: #f44336
   $buttontextcolor: #fff
 
@@ -70,18 +64,19 @@ body
   background: $buttoncolor
   border: 1px solid $buttoncolor
   border-radius: 3px
-  box-shadow: 0 2.5px 5px 2.5px $globalshadowcolor
+  box-shadow: 0 1px 7.5px 2px $globalshadowcolor
   color: $buttontextcolor
-  display: table-cell
+  display: inline-table
   height: 40px
+  margin-bottom: 3px
   position: relative
   text-align: center
   user-select: none
+  vertical-align: middle
   width: 120px
 
-
   &:hover
-    animation-duration: .2s
+    animation-duration: .1s
     animation-fill-mode: forwards
     animation-name: hoverIn
     cursor: pointer
@@ -95,7 +90,7 @@ body
     from
       background: darken($buttoncolor, 30%)
       border: 1px solid darken($buttoncolor, 30%)
-    
+
     to
       background-color: $buttoncolor
       border: 1px solid $buttoncolor
@@ -110,6 +105,14 @@ body
 
 .load-button
   transform: translateX(25px)
+
+.add-button
+  height: 35px
+  margin-left: 5px
+  width: 35px
+
+  div
+    height: 100%
 
 .storage-unav
   display: none
